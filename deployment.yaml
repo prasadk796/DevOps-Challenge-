@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-code
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-code
+  template:
+    metadata:
+      labels:
+        app: my-code
+    spec:
+      containers:
+      - name: my-code
+        image: prasadk2/my-app:v2
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            cpu: "200m"
+
+            ##
